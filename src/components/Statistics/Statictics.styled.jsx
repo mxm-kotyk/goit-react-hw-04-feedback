@@ -17,6 +17,7 @@ export const StatsWrapper = styled.div`
 
 export const Paragraph = styled.p`
   font-weight: 500;
+  text-transform: capitalize;
 `;
 
 export const Text = styled.span`

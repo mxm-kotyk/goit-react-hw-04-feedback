@@ -6,25 +6,15 @@ import {
   Text,
 } from './Statictics.styled';
 
-export const Statictics = ({
-  good,
-  neutral,
-  bad,
-  total,
-  positivePercentage,
-}) => {
+export const Statictics = ({ options, total, positivePercentage }) => {
   return (
     <MainWrapper>
       <StatsWrapper>
-        <Paragraph>
-          Good: <Text>{good}</Text>
-        </Paragraph>
-        <Paragraph>
-          Neutral: <Text>{neutral}</Text>
-        </Paragraph>
-        <Paragraph>
-          Bad: <Text>{bad}</Text>
-        </Paragraph>
+        {Object.entries(options).map(([name, velue]) => (
+          <Paragraph key={name}>
+            {name}: <Text>{velue}</Text>
+          </Paragraph>
+        ))}
       </StatsWrapper>
       <Paragraph>
         Total: <Text>{total()}</Text>
@@ -37,7 +27,7 @@ export const Statictics = ({
 };
 
 Statictics.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
+  options: PropTypes.objectOf(PropTypes.number),
+  total: PropTypes.func.isRequired,
+  positivePercentage: PropTypes.func.isRequired,
 };
